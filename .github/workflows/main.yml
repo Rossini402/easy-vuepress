@@ -1,1 +1,46 @@
+name: AutoDeploy
 
+on:
+  push:
+    branches: [master] # master分支push就执行该工作流
+    paths-ignore:
+      - LICENSE
+      - README.md
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3 # git 克隆到当前机器上
+        
+      - name: Node环境
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+          
+      - name: 缓存检查
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/package-lock')}}
+          
+      - name: 安装依赖
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: 打包构建
+        run: npm run build
+      
+      - name: 部署
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.USER_HOST }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.KEY }}
+          source: './dist'
+          target: ${{ secrets.USER_TARGET }}
