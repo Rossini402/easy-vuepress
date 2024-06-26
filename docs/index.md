@@ -1,10 +1,10 @@
 ---
 home: true
 heroImage: /img/logo.png
-heroText: test-vuepress-theme-vdoing
+heroText: vuepress-theme-vdoing
 tagline: 🚀一款简洁高效的VuePress 知识管理&博客 主题
 actionText: 开始使用 →
-actionLink: /pages/a2f161/
+actionLink: /doc/pages/fast-start/
 bannerBg: none # auto => 网格纹背景(有bodyBgImg时无背景)，默认 | none => 无 | '大图地址' | background: 自定义背景样式       提示：如发现文本颜色不适应你的背景时可以到palette.styl修改$bannerTextColor变量
 
 features: # 可选的
@@ -43,7 +43,7 @@ postList: none
 
 <br/>
 <p align="center" style="color: #999;">
-  赞助商 (进入注册为主题作者充电)
+  欢迎使用DI-Link IoT平台
 </p>
 <p align="center">
   <a href="http://apifox.cn/a103xugaoyi" target="_blank"><img src="https://jsd.cdn.zzko.cn/gh/xugaoyi/blog-gitalk-comment@master/img/441669861566_.2bedplbm21hc.jpg" alt="npm" class="no-zoom" style="width: 300px;border-radius: 2px;"></a>
